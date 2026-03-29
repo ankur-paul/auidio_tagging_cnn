@@ -200,7 +200,13 @@ def train(args):
             '{}_iterations.pth'.format(resume_iteration))
 
         logging.info('Loading checkpoint {}'.format(resume_checkpoint_path))
-        checkpoint = torch.load(resume_checkpoint_path)
+        try:
+            checkpoint = torch.load(
+                resume_checkpoint_path,
+                map_location=device,
+                weights_only=False)
+        except TypeError:
+            checkpoint = torch.load(resume_checkpoint_path, map_location=device)
         model.load_state_dict(checkpoint['model'])
         train_sampler.load_state_dict(checkpoint['sampler'])
         statistics_container.load_state_dict(resume_iteration)
