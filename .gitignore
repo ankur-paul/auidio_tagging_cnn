@@ -11,4 +11,4 @@ paper_statistics
 .venv
 datasets
 raw
-workspaces
+workspaces/audioset_tagging/hdf5s
