@@ -6,7 +6,7 @@
 *.wav
 __pycache__
 _logs
-*.pth
+
 paper_statistics
 .venv
 datasets
